@@ -8,6 +8,8 @@ Choose your location and check out the weather.
 
 ## Credits
 
+Testing 123 456 789
+
 HWT builds on the weather app project from [Chris Ferdinandi's](https://twitter.com/ChrisFerdinandi) [Vanilla JS Academy course](https://vanillajsacademy.com/).
 
 The project also utilizes the following APIs:
