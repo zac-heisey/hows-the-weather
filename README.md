@@ -4,7 +4,7 @@ The How's the Weather (HTW) web app uses your current location to show you the w
 
 ## Using the HWT App
 
-Instructions TBD
+Choose your location and check out the weather!
 
 ## Credits
 
