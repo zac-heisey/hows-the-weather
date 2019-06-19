@@ -2,7 +2,7 @@
 
 The How's the Weather (HTW) web app uses your current location to show you the weather where you are. You can also select and compare the weather in another location as well.
 
-## Using the App
+## Using the HWT App
 
 Instructions TBD
 
