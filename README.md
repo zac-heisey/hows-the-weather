@@ -4,9 +4,11 @@ The How's the Weather (HTW) web app uses your current location to show you the w
 
 ## Using the HWT App
 
-TBD
+Choose your location and check out the weather.
 
 ## Credits
+
+Testing 123 456 789
 
 HWT builds on the weather app project from [Chris Ferdinandi's](https://twitter.com/ChrisFerdinandi) [Vanilla JS Academy course](https://vanillajsacademy.com/).
 
