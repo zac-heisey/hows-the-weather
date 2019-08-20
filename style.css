@@ -1,0 +1,43 @@
+/*== CSS Variables ==*/
+
+:root {
+  --color-1: #DFE7EE; /* Light Gray */
+}
+
+
+/*== Global Resets ==*/
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+
+/*== Global Styles ==*/
+
+body {
+  display: flex;
+}
+
+/*== Section Styles ==*/
+
+section {
+  width: 50%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+section#left {
+  border-right: 5px solid var(--color-1);
+}
+
+section#right {
+  border-left: 5px solid var(--color-1);
+}
