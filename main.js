@@ -1,12 +1,9 @@
 // Get #local-weather container
 var localWeather = document.querySelector('#local-weather');
-
 // Get #weather-in container
 var weatherIn = document.querySelector('#weather-in');
-
 // Get location input field
 var locationInput = document.querySelector('#locationInput');
-
 // Weatherbit API
 var apiKey = '7754743d740042859465c34d3ffc23c0';
 
@@ -35,6 +32,8 @@ function getUserLocation() {
     if (xhr.status >= 200 && xhr.status < 300) {
       // This will run when the request is successful
       getWeather(JSON.parse(xhr.responseText).city);
+      // Set showWeather to #local-weather (left) container
+      showWeather = localWeather;
     } else {
       // This will run when it's not
       console.log('There was an error retrieving data from the ipapi API. Here is the xhr.responseText info: ' + xhr.responseText);
@@ -51,15 +50,6 @@ function getUserLocation() {
 // Get weather based on user location via Weatherbit API
 function getWeather(userLocation) {
 
-  // If location input field value is empty
-  if (locationInput.value.length === 0) {
-    // Set showWeather to #local-weather (left) container
-    showWeather = localWeather;
-  } else {
-    // Set showWeather to #weather-in (right) container
-    showWeather = weatherIn;
-  }
-
   // Set up our HTTP request
   var xhr = new XMLHttpRequest();
 
@@ -73,13 +63,13 @@ function getWeather(userLocation) {
       var content = JSON.parse(xhr.responseText);
       var iconId = content.data[0].weather.icon;
       showWeather.innerHTML =
-        '<h3>' + sanitizeHTML(content.data[0].temp) + '°F / '
+        '<h2>' + sanitizeHTML(content.data[0].city_name) + ', ' + sanitizeHTML(content.data[0].country_code) + '</h2>'
+        + '<h3>' + sanitizeHTML(content.data[0].temp) + '°F / '
         + sanitizeHTML(Math.round((content.data[0].temp - 32) * 5/9)) + '°C</h3>'
         + '<img src="https://www.weatherbit.io/static/img/icons/' + iconId + '.png">'
         + '<p><strong>' + sanitizeHTML(content.data[0].weather.description) + '</strong></p>'
         + '<p>Feels Like: ' + sanitizeHTML(content.data[0].app_temp) + '°F / '
         + sanitizeHTML(Math.round((content.data[0].app_temp - 32) * 5/9)) + '°C</p>'
-        + '<p>Precipitation: ' + sanitizeHTML(content.data[0].precip) + '</p>'
         + '<p>Humidity: ' + sanitizeHTML(content.data[0].rh) + '%</p>'
         + '<p>Wind Speed: ' + sanitizeHTML(content.data[0].wind_spd) + 'mph</p>'
         + '<p>Cloud Coverage: ' + sanitizeHTML(content.data[0].clouds) + '%</p>'
@@ -96,3 +86,19 @@ function getWeather(userLocation) {
   xhr.send();
 
 }
+
+// Listen for keydown event on input field
+locationInput.addEventListener('keydown', function(event) {
+  if (event.key === 'Enter') {
+    // If location input field value is empty
+    if (locationInput.value.length > 0) {
+      // Run getWeather function with user input city
+      getWeather(locationInput.value);
+      // Set showWeather to #weather-in (right) container
+      showWeather = weatherIn;
+    }
+  }
+}, false);
+
+// Run application on initial page load
+getUserLocation();
