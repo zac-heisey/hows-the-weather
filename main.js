@@ -22,7 +22,7 @@ var sanitizeHTML = function (str) {
 };
 
 // Get user location via ipapi API
-var getUserLocation = function() {
+function getUserLocation() {
 
   // Set up our HTTP request
   var xhr = new XMLHttpRequest();
@@ -46,10 +46,10 @@ var getUserLocation = function() {
   xhr.open('GET', 'https://ipapi.co/json');
   xhr.send();
 
-};
+}
 
 // Get weather based on user location via Weatherbit API
-var getWeather = function(userLocation) {
+function getWeather(userLocation) {
 
   // If location input field value is empty
   if (locationInput.value.length === 0) {
@@ -95,4 +95,4 @@ var getWeather = function(userLocation) {
   xhr.open('GET', 'https://api.weatherbit.io/v2.0/current?city=' + userLocation + '&units=I&key=' + apiKey);
   xhr.send();
 
-};
+}
