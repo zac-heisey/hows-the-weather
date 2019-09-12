@@ -63,16 +63,19 @@ function getWeather(userLocation) {
       var content = JSON.parse(xhr.responseText);
       var iconId = content.data[0].weather.icon;
       showWeather.innerHTML =
-        '<h2>' + sanitizeHTML(content.data[0].city_name) + ', ' + sanitizeHTML(content.data[0].country_code) + '</h2>'
-        + '<h3>' + sanitizeHTML(content.data[0].temp) + '°F / '
-        + sanitizeHTML(Math.round((content.data[0].temp - 32) * 5/9)) + '°C</h3>'
+        '<h1>' + sanitizeHTML(content.data[0].city_name) + ', ' + sanitizeHTML(content.data[0].state_code) + ', ' +
+        sanitizeHTML(content.data[0].country_code) + '</h1>'
+        + '<h2>' + sanitizeHTML(content.data[0].temp) + '°F / '
+        + sanitizeHTML(Math.round((content.data[0].temp - 32) * 5/9)) + '°C</h2>' + '<div class="weather-info">'
         + '<img src="https://www.weatherbit.io/static/img/icons/' + iconId + '.png">'
-        + '<p><strong>' + sanitizeHTML(content.data[0].weather.description) + '</strong></p>'
+        + '<div class="weather-details">'
+        + '<h3>' + sanitizeHTML(content.data[0].weather.description) + '</h3>'
         + '<p>Feels Like: ' + sanitizeHTML(content.data[0].app_temp) + '°F / '
         + sanitizeHTML(Math.round((content.data[0].app_temp - 32) * 5/9)) + '°C</p>'
         + '<p>Humidity: ' + sanitizeHTML(content.data[0].rh) + '%</p>'
         + '<p>Wind Speed: ' + sanitizeHTML(content.data[0].wind_spd) + 'mph</p>'
         + '<p>Cloud Coverage: ' + sanitizeHTML(content.data[0].clouds) + '%</p>'
+        + '</div></div>';
     } else {
       // This will run when it's not
       showWeather.textContent = 'Sorry, we\'re having trouble getting weather for your location. Please try again later.';

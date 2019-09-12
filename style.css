@@ -2,6 +2,9 @@
 
 :root {
   --color-1: #DFE7EE; /* Light Gray */
+  --color-2: lightseagreen;
+  --color-3: orange;
+  --font-1: 'Nunito', sans-serif;
 }
 
 
@@ -21,6 +24,29 @@ html, body {
 
 body {
   display: flex;
+  font-family: var(--font-1);
+}
+
+h1, h2, h3 {
+  text-transform: uppercase;
+}
+
+img {
+  max-height: 120px;
+}
+
+input {
+  width: 200px;
+  padding: 8px;
+  border-radius: 8px;
+  border: 2px solid var(--color-1);
+  font-size: 1rem;
+  font-family: var(--font-1);
+}
+
+input:focus {
+  border: 2px solid var(--color-2);
+  outline: none;
 }
 
 /*== Section Styles ==*/
@@ -32,6 +58,7 @@ section {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
 section#left {
@@ -40,4 +67,54 @@ section#left {
 
 section#right {
   border-left: 5px solid var(--color-1);
+}
+
+#local-weather, #weather-in {
+  width: 100%;
+}
+
+#local-weather h2 {
+  color: var(--color-3);
+}
+
+#weather-in h2 {
+  color: var(--color-2);
+}
+
+/*== Media Queries ==*/
+
+@media (max-width: 500px) {
+
+  body {
+    flex-direction: column;
+  }
+
+  section {
+    width: 100%;
+    height: auto;
+  }
+
+  section#left {
+    border-bottom: 5px solid var(--color-1);
+    border-right: none;
+  }
+
+  section#right {
+    border-left: none;
+  }
+
+  .weather-info {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+  }
+
+  .weather-details {
+    text-align: left;
+  }
+
+  img {
+    margin-top: 3rem;
+  }
+
 }
